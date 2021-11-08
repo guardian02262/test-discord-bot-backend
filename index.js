@@ -23,13 +23,13 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors({
-	origin: ["http://localhost:3000"],
+	origin: ["http://guardian-discord-bot-frontend.herokuapp.com"],
 	credentials: true
 }))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use('/api', aplicatie)
-
-app.listen(cfg.port, () => {
+const port = process.env.PORT || cfg.port;
+app.listen(port, () => {
     console.log('Work!')
 })

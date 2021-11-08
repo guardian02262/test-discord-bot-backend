@@ -3,6 +3,7 @@ const fs = require('fs');
 const { glob } = require("glob");
 const { promisify } = require("util");
 const globPromise = promisify(glob);
+const crypto = require('../../utils/crypto');
 const client = new Client({ intents: [
 	"GUILDS",
     "GUILD_MEMBERS",
@@ -37,5 +38,5 @@ for (const file of eventFiles) {
 	}
 }
 
-client.login(config.token)
+client.login(crypto.decrypt(config.token))
 
